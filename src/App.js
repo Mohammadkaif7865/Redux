@@ -3,7 +3,7 @@ import './App.css';
 
 // * A store that holds the state of your application.
 /* Three Principles
- First Principle
+ First Principle just chilling around
  "The state of your whole application is stored in an object tree within a single store”
  Maintain our application state in a single object which would be managed by the Redux store
  Cake Shop —
