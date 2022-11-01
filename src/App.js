@@ -1,4 +1,13 @@
 import './App.css';
+import User from './User';
+function App() {
+  return (
+    <div className="App">
+      <h1>This is the react component</h1>
+      <User userInfo={{ name: "abrahim", age: 45 }}></User>
+    </div>
+  );
+}
 // * The state is a built-in React object that is used to contain data or information about the component. A component's state can change over time; whenever it changes, the component re-renders
 
 // * A store that holds the state of your application.
@@ -37,12 +46,5 @@ import './App.css';
 // Cake Shop
 
 // Reducer is the shopkeeper
-function App() {
-  return (
-    <div className="App">
-      <h1>This is the react component</h1>
-    </div>
-  );
-}
 
 export default App;
