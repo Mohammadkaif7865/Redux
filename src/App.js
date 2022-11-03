@@ -7,6 +7,8 @@ function App() {
     <div className="App">
       <h1>This is Counter</h1>
       <h3>{counter}</h3>
+      <button onClick={Increament}></button>
+      <button onClick={Decreament}></button>
     </div>
   );
 }
