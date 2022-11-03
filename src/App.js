@@ -1,10 +1,12 @@
 import './App.css';
-import User from './User';
+import { useSelector } from 'react-redux';
 function App() {
+  const counter = useSelector((state) => state.counter);
   return (
+
     <div className="App">
-      <h1>This is the react component</h1>
-      <User userInfo={{ name: "abrahim", age: 45 }}></User>
+      <h1>This is Counter</h1>
+      <h3>{counter}</h3>
     </div>
   );
 }
