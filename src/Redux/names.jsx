@@ -10,8 +10,11 @@ export const nameSave = createSlice({
         },
         removeLastName: (state) => {
             state.names.pop();
+        },
+        removeThisName: (state, action) => {
+            state.names.splice(state.names.indexOf(action.payload));
         }
     }
 })
-export const { addName, removeLastName } = nameSave.actions;
+export const { addName, removeLastName, removeThisName } = nameSave.actions;
 export default nameSave.reducer;

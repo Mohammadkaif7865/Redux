@@ -1,12 +1,13 @@
 import './App.css';
 import { increment, decrement, incrementByAmount } from "./Redux/counter";
-import { addName, removeLastName } from './Redux/names';
+import { addName, removeLastName , removeThisName} from './Redux/names';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 function App() {
   const { value } = useSelector((state) => state.counter);
   const { names } = useSelector((state) => state.names);
   const [name, setName] = useState("");
+  const [removeName, setremoveName] = useState("");
   const dispatch = useDispatch();
   const Increament = () => {
     dispatch(increment());
@@ -17,7 +18,6 @@ function App() {
   const AddByTen = () => {
     dispatch(incrementByAmount(10));
   }
-  console.log(names);
   return (
 
     <div className="App">
@@ -29,6 +29,8 @@ function App() {
       <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
       <button onClick={() => dispatch(addName(name))}>Add name</button>
       <button onClick={() => dispatch(removeLastName())}>Remove Last Name</button>
+      <input type="text" id='removeName' value={removeName} onChange={(e)=>setremoveName(e.target.value)} />
+      <button onClick={()=> dispatch(removeThisName(removeName))}></button>
       <div>
         {
           name.length > 0 ? names.map((item, i) => {
@@ -69,20 +71,5 @@ function App() {
 // { type: BUY_CAKE}
 // * A reducer which actually carries out the state transition depending on the action.
 // Three Principles
-
-// Third Principle
-
-// "To specify how the state tree is transformed by actions, you write pure reducers”
-// Reducer - (previousState, action) => newState
-
-// Cake Shop
-// 25 dec
-// 26 dec
-// 27 dec
-// 28 dec
-// 29 dec
-// 30 dec
-// 31 dec
-// Reducer is the shopkeeper
 // * Now we will start redux-toolkit react redux and redux tool-kit both are different things
 export default App;
