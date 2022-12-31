@@ -9,9 +9,9 @@ function App() {
   const Decreament = () => {
     dispatch({ type: 'DEC' });
   }
-   const AddByTen = () => {
-    dispatch({ type: 'ADD' , payload: 10});
-   }
+  const AddByTen = () => {
+    dispatch({ type: 'ADD', payload: 10 });
+  }
   return (
 
     <div className="App">
@@ -66,6 +66,7 @@ function App() {
 // 28 dec
 // 29 dec
 // 30 dec
+// 31 dec
 // Reducer is the shopkeeper
 // * Now we will start redux-toolkit react redux and redux tool-kit both are different things
 export default App;
