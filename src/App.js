@@ -1,14 +1,19 @@
 import './App.css';
 import { increment, decrement, incrementByAmount } from "./Redux/counter";
 import { addName, removeLastName, removeThisName } from './Redux/names';
+import { addText, getLorem } from './Redux/dummy';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 function App() {
   const { value } = useSelector((state) => state.counter);
   const { names } = useSelector((state) => state.names);
+  const { text } = useSelector((state) => state.dummyText);
   const [name, setName] = useState("");
   const [removeName, setremoveName] = useState("");
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getLorem());
+  }, []);
   const Increament = () => {
     dispatch(increment());
   }
@@ -44,6 +49,10 @@ function App() {
           }) : <p>Nothing in the names</p>
         }
       </div>
+      <p>
+        {text}
+      </p>
+      <button onClick={() => dispatch(addText("xyx my text"))}>AddText</button>
     </div>
   );
 }
