@@ -26,18 +26,20 @@ function App() {
       <button onClick={Increament}>Increament</button>
       <button onClick={Decreament}>Decreament</button>
       <button onClick={AddByTen}>AddByTen</button>
-      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      <br />
+      <label htmlFor="name">Enter the name to be Added:</label>
+      <input id='name' type="text" value={name} onChange={(e) => setName(e.target.value)} />
       <button onClick={() => dispatch(addName(name))}>Add name</button>
       <button onClick={() => dispatch(removeLastName())}>Remove Last Name</button>
       <br />
-      <label htmlFor="removeName">Enter the Name which you want to remove</label>
+      <label htmlFor="removeName">Enter the Name which you want to remove:</label>
       <input type="text" id='removeName' value={removeName} onChange={(e) => setremoveName(e.target.value)} />
       <button onClick={() => dispatch(removeThisName(removeName))}>
         Remove Name
       </button>
       <div>
         {
-          name.length > 0 ? names.map((item, i) => {
+          names.length > 0 ? names.map((item, i) => {
             return <p key={i}>{item}</p>
           }) : <p>Nothing in the names</p>
         }

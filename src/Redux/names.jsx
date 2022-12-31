@@ -12,7 +12,7 @@ export const nameSave = createSlice({
             state.names.pop();
         },
         removeThisName: (state, action) => {
-            state.names.splice(state.names.indexOf(action.payload));
+            state.names.splice(state.names.indexOf(action.payload), 1);
         }
     }
 })
