@@ -1,6 +1,6 @@
 import './App.css';
 import { increment, decrement, incrementByAmount } from "./Redux/counter";
-import { addName, removeLastName , removeThisName} from './Redux/names';
+import { addName, removeLastName, removeThisName } from './Redux/names';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 function App() {
@@ -29,8 +29,12 @@ function App() {
       <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
       <button onClick={() => dispatch(addName(name))}>Add name</button>
       <button onClick={() => dispatch(removeLastName())}>Remove Last Name</button>
-      <input type="text" id='removeName' value={removeName} onChange={(e)=>setremoveName(e.target.value)} />
-      <button onClick={()=> dispatch(removeThisName(removeName))}></button>
+      <br />
+      <label htmlFor="removeName">Enter the Name which you want to remove</label>
+      <input type="text" id='removeName' value={removeName} onChange={(e) => setremoveName(e.target.value)} />
+      <button onClick={() => dispatch(removeThisName(removeName))}>
+        Remove Name
+      </button>
       <div>
         {
           name.length > 0 ? names.map((item, i) => {
