@@ -1,16 +1,17 @@
 import './App.css';
+import { increment, decrement, incrementByAmount } from "./Redux/counter";
 import { useSelector, useDispatch } from 'react-redux';
 function App() {
   const counter = useSelector((state) => state.counter);
   const dispatch = useDispatch();
   const Increament = () => {
-    dispatch({ type: 'INC' });
+    dispatch(increment());
   }
   const Decreament = () => {
-    dispatch({ type: 'DEC' });
+    dispatch(decrement());
   }
   const AddByTen = () => {
-    dispatch({ type: 'ADD', payload: 10 });
+    dispatch(incrementByAmount);
   }
   return (
 
