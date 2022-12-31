@@ -6,7 +6,7 @@ import { useState } from 'react';
 function App() {
   const { value } = useSelector((state) => state.counter);
   const { names } = useSelector((state) => state.names);
-  const [name, setName] = useState("xyx");
+  const [name, setName] = useState("");
   const dispatch = useDispatch();
   const Increament = () => {
     dispatch(increment());
@@ -29,6 +29,13 @@ function App() {
       <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
       <button onClick={() => dispatch(addName(name))}>Add name</button>
       <button onClick={() => dispatch(removeLastName())}>Remove Last Name</button>
+      <div>
+        {
+          name.length > 0 ? names.map((item, i) => {
+            return <p key={i}>{item}</p>
+          }) : null
+        }
+      </div>
     </div>
   );
 }
