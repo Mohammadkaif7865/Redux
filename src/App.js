@@ -1,8 +1,12 @@
 import './App.css';
 import { increment, decrement, incrementByAmount } from "./Redux/counter";
+import { addName, removeLastName } from './Redux/names';
 import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
 function App() {
-  const {value} = useSelector((state) => state.counter);
+  const { value } = useSelector((state) => state.counter);
+  const { names } = useSelector((state) => state.names);
+  const [name, setName] = useState("xyx");
   const dispatch = useDispatch();
   const Increament = () => {
     dispatch(increment());
@@ -13,6 +17,7 @@ function App() {
   const AddByTen = () => {
     dispatch(incrementByAmount(10));
   }
+  console.log(names);
   return (
 
     <div className="App">
@@ -21,6 +26,9 @@ function App() {
       <button onClick={Increament}>Increament</button>
       <button onClick={Decreament}>Decreament</button>
       <button onClick={AddByTen}>AddByTen</button>
+      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      <button onClick={() => dispatch(addName(name))}>Add name</button>
+      <button onClick={() => dispatch(removeLastName())}>Remove Last Name</button>
     </div>
   );
 }
