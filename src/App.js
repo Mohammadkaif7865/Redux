@@ -2,7 +2,7 @@ import './App.css';
 import { increment, decrement, incrementByAmount } from "./Redux/counter";
 import { useSelector, useDispatch } from 'react-redux';
 function App() {
-  const counter = useSelector((state) => state.counter);
+  const {value} = useSelector((state) => state.counter);
   const dispatch = useDispatch();
   const Increament = () => {
     dispatch(increment());
@@ -11,13 +11,13 @@ function App() {
     dispatch(decrement());
   }
   const AddByTen = () => {
-    dispatch(incrementByAmount);
+    dispatch(incrementByAmount(10));
   }
   return (
 
     <div className="App">
       <h1>This is Counter</h1>
-      <h3>{counter}</h3>
+      <h3>{value}</h3>
       <button onClick={Increament}>Increament</button>
       <button onClick={Decreament}>Decreament</button>
       <button onClick={AddByTen}>AddByTen</button>
