@@ -33,7 +33,7 @@ function App() {
         {
           name.length > 0 ? names.map((item, i) => {
             return <p key={i}>{item}</p>
-          }) : null
+          }) : <p>Nothing in the names</p>
         }
       </div>
     </div>
