@@ -25,7 +25,7 @@ export const dummy = createSlice({
         }
     },
     extraReducers: {
-        [getLorem.pending]: (state, { payload }) => {
+        [getLorem.pending]: (state) => {
             state.loading = true;
         },
         [getLorem.fulfilled]: (state, { payload }) => {

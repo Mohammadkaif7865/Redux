@@ -23,6 +23,7 @@ function App() {
   const AddByTen = () => {
     dispatch(incrementByAmount(10));
   }
+  console.log(getLorem);
   return (
 
     <div className="App">
