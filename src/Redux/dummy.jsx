@@ -42,3 +42,4 @@ export const dummy = createSlice({
 })
 export const { addText } = dummy.actions;
 export default dummy.reducer;
+// ? Here i am using the redux-toolkit not react-redux
