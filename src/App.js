@@ -2,17 +2,19 @@ import './App.css';
 import { increment, decrement, incrementByAmount } from "./Redux/counter";
 import { addName, removeLastName, removeThisName } from './Redux/names';
 import { addText, getLorem } from './Redux/dummy';
+import { ExtraText } from './Redux/moretex';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 function App() {
   const { value } = useSelector((state) => state.counter);
   const { names } = useSelector((state) => state.names);
-  const { text } = useSelector((state) => state.dummyText);
+  const { text, extraText } = useSelector((state) => state.dummyText);
   const [name, setName] = useState("");
   const [removeName, setremoveName] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getLorem());
+    dispatch(ExtraText());
   }, []);
   const Increament = () => {
     dispatch(increment());
@@ -50,7 +52,8 @@ function App() {
         }
       </div>
       <p>
-        {text}
+        {text+ extraText}
+
       </p>
       <button onClick={() => dispatch(addText("xyx my text"))}>AddText</button>
     </div>

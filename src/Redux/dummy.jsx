@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { ExtraText } from "./moretex";
 import axios from "axios";
 const dummyApi = "https://baconipsum.com/api/?type=meat-and-filler";
 export const getLorem = createAsyncThunk(
@@ -15,9 +16,13 @@ export const dummy = createSlice({
     name: 'names',
     initialState: {
         text: "",
+        extraText: "",
         isSuccess: false,
         loading: false,
-        message: ""
+        message: "",
+        isExtraSuccess: false,
+        extraLoading: false,
+        extraMessage: "",
     },
     reducers: {
         addText: (state, actions) => {
@@ -31,13 +36,26 @@ export const dummy = createSlice({
         [getLorem.fulfilled]: (state, { payload }) => {
             state.loading = false;
             state.text = payload;
-            state.isSuccess = false;
+            state.isSuccess = true;
         },
         [getLorem.rejected]: (state, { payload }) => {
             state.message = payload;
             state.loading = false;
             state.isSuccess = false;
         },
+        [ExtraText.pending](state) {
+            state.extraLoading = true;
+        },
+        [ExtraText.fulfilled](state, { payload }) {
+            state.extraLoading = false;
+            state.extraText = payload;
+            state.isSuccess = true;
+        },
+        [ExtraText.pending](state, { payload }) {
+            state.extraMessage = payload;
+            state.isSuccess = false;
+            state.extraLoading = false;
+        }
     }
 })
 export const { addText } = dummy.actions;
