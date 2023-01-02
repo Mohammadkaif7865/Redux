@@ -36,7 +36,7 @@ function App() {
       <br />
       <label htmlFor="name">Enter the name to be Added:</label>
       <input id='name' type="text" value={name} onChange={(e) => setName(e.target.value)} />
-      <button onClick={() => dispatch(addName(name))}>Add name</button>
+      <button onClick={() => { dispatch(addName(name)); setName(""); }}>Add name</button>
       <button onClick={() => dispatch(removeLastName())}>Remove Last Name</button>
       <br />
       <label htmlFor="removeName">Enter the Name which you want to remove:</label>
@@ -52,7 +52,7 @@ function App() {
         }
       </div>
       <p>
-        {text+ extraText}
+        {text + extraText}
 
       </p>
       <button onClick={() => dispatch(addText("xyx my text"))}>AddText</button>
