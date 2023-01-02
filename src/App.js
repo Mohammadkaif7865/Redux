@@ -14,7 +14,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getLorem());
-    dispatch(ExtraText());
+    dispatch(ExtraText(4));
   }, []);
   const Increament = () => {
     dispatch(increment());
