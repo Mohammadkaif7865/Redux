@@ -4,7 +4,7 @@ const url = 'https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lo
 export const ExtraText = createAsyncThunk('extraText/getExtraText', async (arg, { rejectWithValue }) => {
     try {
         const { data } = await axios.get(`${url}${arg}`);
-        return data;
+        return data+"extraText";
     } catch (e) {
         rejectWithValue(e.response.data);
     }
