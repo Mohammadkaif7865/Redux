@@ -3,12 +3,14 @@ import { increment, decrement, incrementByAmount } from "./Redux/counter";
 import { addName, removeLastName, removeThisName } from './Redux/names';
 import { addText, getLorem } from './Redux/dummy';
 import { ExtraText } from './Redux/moretex';
+import { SendTextMessage } from './Redux/sendDataThunk';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 function App() {
   const { value } = useSelector((state) => state.counter);
   const { names } = useSelector((state) => state.names);
-  const { text, extraText } = useSelector((state) => state.dummyText);
+  const [inputText, setInputText] = useState("");
+  const { text, extraText, messageSend } = useSelector((state) => state.dummyText);
   const [name, setName] = useState("");
   const [removeName, setremoveName] = useState("");
   const dispatch = useDispatch();
@@ -16,6 +18,9 @@ function App() {
     dispatch(getLorem());
     dispatch(ExtraText(4));
   }, []);
+  const messageDone =()=>{
+    dispatch(SendTextMessage({"message": inputText}));
+  }
   const Increament = () => {
     dispatch(increment());
   }
@@ -56,6 +61,12 @@ function App() {
 
       </p>
       <button onClick={() => dispatch(addText("xyx my text"))}>AddText</button>
+      <br />
+      {
+        messageSend? <label htmlFor="s-m">Message Have been recieved</label>: <label htmlFor="s-m">Message haven't  recieved</label>
+      }
+      <input type="text" id='s-m' value={inputText} onChange={(e)=> setInputText(e.target.value)} />
+      <button onClick={messageDone}>Send message</button>
     </div>
   );
 }
