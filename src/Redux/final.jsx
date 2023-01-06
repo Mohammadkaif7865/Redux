@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Kuchbhi } from "./nowIunderStand";
+import { Kuchbhi } from "./nowiUnderStand";
 export const final = createSlice({
     name: "final",
     initialState: {
@@ -29,5 +29,5 @@ export const final = createSlice({
         },
     }
 });
-export const {addFinalText}  = Kuchbhi.actions;
-export default Kuchbhi.reducers;
+export const {addFinalText}  = final.actions;
+export default final.reducer;
