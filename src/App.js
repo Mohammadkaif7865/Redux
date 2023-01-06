@@ -3,12 +3,14 @@ import { increment, decrement, incrementByAmount } from "./Redux/counter";
 import { addName, removeLastName, removeThisName } from './Redux/names';
 import { addText, getLorem } from './Redux/dummy';
 import { ExtraText } from './Redux/moretex';
+import { addFinalText } from './Redux/final';
 import { SendTextMessage } from './Redux/sendDataThunk';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 function App() {
   const { value } = useSelector((state) => state.counter);
   const { names } = useSelector((state) => state.names);
+  const {finalText} = useSelector((state) =>state.finalSentence);
   const [inputText, setInputText] = useState("");
   const { text, extraText, messageSend } = useSelector((state) => state.dummyText);
   const [name, setName] = useState("");
@@ -17,6 +19,7 @@ function App() {
   useEffect(() => {
     dispatch(getLorem());
     dispatch(ExtraText(4));
+    dispatch(addFinalText(1));
   }, []);
   const messageDone =()=>{
     dispatch(SendTextMessage({"message": inputText}));
@@ -67,6 +70,8 @@ function App() {
       }
       <input type="text" id='s-m' value={inputText} onChange={(e)=> setInputText(e.target.value)} />
       <button onClick={messageDone}>Send message</button>
+      <h1>This is the Final Text</h1>
+      <p>{finalText}</p>
     </div>
   );
 }
