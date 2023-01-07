@@ -1,82 +1,87 @@
 import './App.css';
-import { increment, decrement, incrementByAmount } from "./Redux/counter";
-import { addName, removeLastName, removeThisName } from './Redux/names';
-import { addText, getLorem } from './Redux/dummy';
-import { ExtraText } from './Redux/moretex';
-import { addFinalText } from './Redux/final';
-import { Kuchbhi } from './Redux/nowiUnderStand';
-import { SendTextMessage } from './Redux/sendDataThunk';
-import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import MuiTypography from './components/MuiTypography';
 function App() {
-  const { value } = useSelector((state) => state.counter);
-  const { names } = useSelector((state) => state.names);
-  const {finalText} = useSelector((state) =>state.finalSentence);
-  const [inputText, setInputText] = useState("");
-  const { text, extraText, messageSend } = useSelector((state) => state.dummyText);
-  const [name, setName] = useState("");
-  const [removeName, setremoveName] = useState("");
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getLorem());
-    dispatch(ExtraText(4));
-    dispatch(Kuchbhi(1));
-  }, []);
-  const messageDone =()=>{
-    dispatch(SendTextMessage({"message": inputText}));
-  }
-  const Increament = () => {
-    dispatch(increment());
-  }
-  const Decreament = () => {
-    dispatch(decrement());
-  }
-  const AddByTen = () => {
-    dispatch(incrementByAmount(10));
-  }
+  
   return (
-
+    
     <div className="App">
-      <h1>This is Counter</h1>
-      <h3>{value}</h3>
-      <button onClick={Increament}>Increament</button>
-      <button onClick={Decreament}>Decreament</button>
-      <button onClick={AddByTen}>AddByTen</button>
-      <br />
-      <label htmlFor="name">Enter the name to be Added:</label>
-      <input id='name' type="text" value={name} onChange={(e) => setName(e.target.value)} />
-      <button onClick={() => { dispatch(addName(name)); setName(""); }}>Add name</button>
-      <button onClick={() => dispatch(removeLastName())}>Remove Last Name</button>
-      <br />
-      <label htmlFor="removeName">Enter the Name which you want to remove:</label>
-      <input type="text" id='removeName' value={removeName} onChange={(e) => setremoveName(e.target.value)} />
-      <button onClick={() => dispatch(removeThisName(removeName))}>
-        Remove Name
-      </button>
-      <div>
-        {
-          names.length > 0 ? names.map((item, i) => {
-            return <p key={i}>{item}</p>
-          }) : <p>Nothing in the names</p>
-        }
-      </div>
-      <p>
-        {text + extraText}
-
-      </p>
-      <button onClick={() => dispatch(addText("xyx my text"))}>AddText</button>
-      <br />
-      {
-        messageSend? <label htmlFor="s-m">Message Have been recieved</label>: <label htmlFor="s-m">Message haven't  recieved</label>
-      }
-      <input type="text" id='s-m' value={inputText} onChange={(e)=> setInputText(e.target.value)} />
-      <button onClick={messageDone}>Send message</button>
-      <h1>This is the Final Text</h1>
-      <p>{finalText}</p>
-      <button onClick={() => dispatch(addFinalText("xyx my text"))}>AddFinalText</button>
+        <MuiTypography/>
     </div>
   );
 }
+// import { increment, decrement, incrementByAmount } from "./Redux/counter";
+// import { addName, removeLastName, removeThisName } from './Redux/names';
+// import { addText, getLorem } from './Redux/dummy';
+// import { ExtraText } from './Redux/moretex';
+// import { addFinalText } from './Redux/final';
+// import { Kuchbhi } from './Redux/nowiUnderStand';
+// import { SendTextMessage } from './Redux/sendDataThunk';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { useState, useEffect } from 'react';
+//   const { value } = useSelector((state) => state.counter);
+//   const { names } = useSelector((state) => state.names);
+//   const {finalText} = useSelector((state) =>state.finalSentence);
+//   const [inputText, setInputText] = useState("");
+//   const { text, extraText, messageSend } = useSelector((state) => state.dummyText);
+//   const [name, setName] = useState("");
+//   const [removeName, setremoveName] = useState("");
+//   const dispatch = useDispatch();
+//   useEffect(() => {
+//     dispatch(getLorem());
+//     dispatch(ExtraText(4));
+//     dispatch(Kuchbhi(1));
+//   }, []);
+//   const messageDone =()=>{
+//     dispatch(SendTextMessage({"message": inputText}));
+//   }
+//   const Increament = () => {
+//     dispatch(increment());
+//   }
+//   const Decreament = () => {
+//     dispatch(decrement());
+//   }
+//   const AddByTen = () => {
+//     dispatch(incrementByAmount(10));
+//   }
+// }
+// eslint-disable-next-line no-lone-blocks
+{/* <h1>This is Counter</h1>
+<h3>{value}</h3>
+<button onClick={Increament}>Increament</button>
+<button onClick={Decreament}>Decreament</button>
+<button onClick={AddByTen}>AddByTen</button>
+<br />
+<label htmlFor="name">Enter the name to be Added:</label>
+<input id='name' type="text" value={name} onChange={(e) => setName(e.target.value)} />
+<button onClick={() => { dispatch(addName(name)); setName(""); }}>Add name</button>
+<button onClick={() => dispatch(removeLastName())}>Remove Last Name</button>
+<br />
+<label htmlFor="removeName">Enter the Name which you want to remove:</label>
+<input type="text" id='removeName' value={removeName} onChange={(e) => setremoveName(e.target.value)} />
+<button onClick={() => dispatch(removeThisName(removeName))}>
+  Remove Name
+</button>
+<div>
+  {
+    names.length > 0 ? names.map((item, i) => {
+      return <p key={i}>{item}</p>
+    }) : <p>Nothing in the names</p>
+  }
+</div>
+<p>
+  {text + extraText}
+
+</p>
+<button onClick={() => dispatch(addText("xyx my text"))}>AddText</button>
+<br />
+{
+  messageSend? <label htmlFor="s-m">Message Have been recieved</label>: <label htmlFor="s-m">Message haven't  recieved</label>
+}
+<input type="text" id='s-m' value={inputText} onChange={(e)=> setInputText(e.target.value)} />
+<button onClick={messageDone}>Send message</button>
+<h1>This is the Final Text</h1>
+<p>{finalText}</p>
+<button onClick={() => dispatch(addFinalText("xyx my text"))}>AddFinalText</button> */}
 // just chilling around
 // * The state is a built-in React object that is used to contain data or information about the component. A component's state can change over time; whenever it changes, the component re-renders
 
