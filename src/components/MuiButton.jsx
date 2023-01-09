@@ -1,4 +1,4 @@
-import { Button, Stack, IconButton } from "@mui/material";
+import { Button, Stack, IconButton , ButtonGroup} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 function MuiButton() {
     return (
@@ -8,6 +8,9 @@ function MuiButton() {
                     <Button variant="text" href="https://google.com">Text</Button>
                     <Button variant="contained">Contained</Button>
                     <Button variant="outlined">Outlined</Button>
+                </Stack>
+                <Stack spacing={2} direction="row">
+                  <Button variant="contained"></Button>
                 </Stack>
                 <Stack spacing={2} direction="row">
                     <Button variant="contained" color="primary">Primary</Button>
