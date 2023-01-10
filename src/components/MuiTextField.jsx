@@ -1,4 +1,5 @@
 import { InputAdornment, Stack, TextField } from "@mui/material";
+import '../App.css';
 import { useState } from "react";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -50,14 +51,16 @@ function MuiTextField() {
                         label="password"
                         helperText="Enter your password"
                         type={visibilty}
+                        // style={{ webkitTextSecurity: "square"}}
                         InputProps={{
                             endAdornment: <InputAdornment position="end">{
-                                visibilty === "passwprd" ? <VisibilityOffIcon onClick={changePasswordVisibilty} />
-                                    : <VisibilityIcon onClick={changePasswordVisibilty} />}</InputAdornment>
+                                visibilty === "password" ? <VisibilityOffIcon  cursor="pointer" onClick={changePasswordVisibilty} />
+                                    : <VisibilityIcon  cursor="pointer" onClick={changePasswordVisibilty} />}</InputAdornment>
                         }} />
                 </Stack>
             </Stack>
         </>
     )
 }
+// style="-webkit-text-security: square;"
 export default MuiTextField;
