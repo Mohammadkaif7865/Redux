@@ -15,6 +15,8 @@ function MuiTextField() {
     }
     return (
         <>
+        {/*Stack is simply a flex box with by default flex direction in coloumn so give the property direction to set the direction of flex*/}
+        {/*Spacing is used to give gap between child element of stack component*/}
             <Stack spacing={4}>
                 <Stack spacing={2} direction="row">
                     <TextField label="name" variant="outlined" color="secondary">
@@ -51,7 +53,6 @@ function MuiTextField() {
                         label="password"
                         helperText="Enter your password"
                         type={visibilty}
-                        // style={{ webkitTextSecurity: "square"}}
                         InputProps={{
                             endAdornment: <InputAdornment position="end">{
                                 visibilty === "password" ? <VisibilityOffIcon  cursor="pointer" onClick={changePasswordVisibilty} />
