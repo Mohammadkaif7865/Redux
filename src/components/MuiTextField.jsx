@@ -46,11 +46,14 @@ function MuiTextField() {
                         }} />
                     <TextField
                         label="Weight"
+                        autoComplete="new-password"
                         InputProps={{
                             endAdornment: <InputAdornment position="end">kg</InputAdornment>
                         }} />
                     <TextField
                         label="password"
+                        autoComplete="new-password"
+                        variant="standard"
                         helperText="Enter your password"
                         type={visibilty}
                         InputProps={{
