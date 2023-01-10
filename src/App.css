@@ -1,9 +1,6 @@
 .App {
 padding: 4rem;
 }
-input[type="password"]{
-  -webkit-text-security: square !important;
-}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
